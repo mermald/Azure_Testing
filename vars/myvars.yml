@@ -1,1 +1,5 @@
-
+resource_group: "mermaldtestansible"
+subscription_id: "3047bda3-8803-4dc0-bdfa-cf1493377354"
+client_id: "14309a48-a83e-4fd2-a145-6156887eacfc"
+secret: "iGhaBUn4uV1bzlHO9JG1oal9751UNXPgDk7WNb5RH1s="
+tenant: "56f9b065-e197-4c2c-be8d-e57ae167da47"
