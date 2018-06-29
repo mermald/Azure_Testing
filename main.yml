@@ -103,4 +103,4 @@
           sku: '7.4'
           version: latest
       
-    register: azure
+      register: azure
