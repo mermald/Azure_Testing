@@ -6,12 +6,12 @@
     - name: Create Azure Deploy
       azure_rm_resourcegroup:
         state: present
-        name: {{ resource_group }}
+        name: "{{ resource_group }}"
         location: westus
-        subscription_id: {{ subscription_id }}
-        client_id: {{ client_id }}
-        secret: {{ secret }}
-        tenant: {{ tenant }} 
+        subscription_id: "{{ subscription_id }}"
+        client_id: "{{ client_id }}"
+        secret: "{{ secret }}"
+        tenant: "{{ tenant }}" 
     - name: Create storage account
       azure_rm_storageaccount:        
         resource_group: mermaldtestansible
@@ -103,4 +103,4 @@
           sku: '7.4'
           version: latest
       
-      register: azure
+    register: azure
