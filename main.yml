@@ -2,6 +2,8 @@
 - hosts: localhost
   connection: local
   gather_facts: no
+  vars_files:
+    - vars/myvars.yml
   tasks:
     - name: Create Azure Deploy
       azure_rm_resourcegroup:
