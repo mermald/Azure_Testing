@@ -1,0 +1,88 @@
+- name: Create storage account
+      azure_rm_storageaccount:        
+        resource_group: "{{ resource_group }}"         
+        name: mermaldstorage01
+        account_type: Standard_LRS        
+        
+    - name: Create virtual network
+      azure_rm_virtualnetwork:
+        resource_group: "{{ resource_group }}"
+        subscription_id: 3047bda3-8803-4dc0-bdfa-cf1493377354
+        client_id: 14309a48-a83e-4fd2-a145-6156887eacfc
+        secret: iGhaBUn4uV1bzlHO9JG1oal9751UNXPgDk7WNb5RH1s=
+        tenant: 56f9b065-e197-4c2c-be8d-e57ae167da47 
+        name: mermaldvnet01
+        address_prefixes: "10.10.0.0/16"
+
+    - name: Add subnet
+      azure_rm_subnet:
+        resource_group: "{{ resource_group }}"
+        subscription_id: 3047bda3-8803-4dc0-bdfa-cf1493377354
+        client_id: 14309a48-a83e-4fd2-a145-6156887eacfc
+        secret: iGhaBUn4uV1bzlHO9JG1oal9751UNXPgDk7WNb5RH1s=
+        tenant: 56f9b065-e197-4c2c-be8d-e57ae167da47 
+        name: mermaldsubnet01
+        address_prefix: "10.10.0.0/24"
+        virtual_network: mermaldvnet01
+
+    - name: Create public ip
+      azure_rm_publicipaddress:
+        resource_group: "{{ resource_group }}"        
+        subscription_id: 3047bda3-8803-4dc0-bdfa-cf1493377354
+        client_id: 14309a48-a83e-4fd2-a145-6156887eacfc
+        secret: iGhaBUn4uV1bzlHO9JG1oal9751UNXPgDk7WNb5RH1s=
+        tenant: 56f9b065-e197-4c2c-be8d-e57ae167da47 
+        allocation_method: Static
+        name: mermaldpip01 
+        
+    - name: Create security group that allows SSH
+      azure_rm_securitygroup:
+        resource_group: "{{ resource_group }}"        
+        subscription_id: 3047bda3-8803-4dc0-bdfa-cf1493377354
+        client_id: 14309a48-a83e-4fd2-a145-6156887eacfc
+        secret: iGhaBUn4uV1bzlHO9JG1oal9751UNXPgDk7WNb5RH1s=
+        tenant: 56f9b065-e197-4c2c-be8d-e57ae167da47
+        name: mermaldsecgroup01
+        rules:
+          - name: SSH
+            protocol: Tcp
+            destination_port_range: 22
+            access: Allow
+            priority: 101
+            direction: Inbound
+
+    - name: Create NIC
+      azure_rm_networkinterface:
+        resource_group: "{{ resource_group }}"
+        subscription_id: 3047bda3-8803-4dc0-bdfa-cf1493377354
+        client_id: 14309a48-a83e-4fd2-a145-6156887eacfc
+        secret: iGhaBUn4uV1bzlHO9JG1oal9751UNXPgDk7WNb5RH1s=
+        tenant: 56f9b065-e197-4c2c-be8d-e57ae167da47
+        name: mermaldnic01
+        virtual_network: mermaldvnet01
+        subnet: mermaldsubnet01
+        public_ip_name: mermaldpip01
+        security_group: mermaldsecgroup01
+
+    - name: Create virtual machine
+      azure_rm_virtualmachine:
+        resource_group: "{{ resource_group }}"
+        subscription_id: 3047bda3-8803-4dc0-bdfa-cf1493377354
+        client_id: 14309a48-a83e-4fd2-a145-6156887eacfc
+        secret: iGhaBUn4uV1bzlHO9JG1oal9751UNXPgDk7WNb5RH1s=
+        tenant: 56f9b065-e197-4c2c-be8d-e57ae167da47
+        name: mermaldvm01
+        vm_size: Standard_D2s_v3
+        storage_account: mermaldstorage01
+        storage_container: mermaldvm01
+        storage_blob: mermaldtest01.vhd
+        admin_username: mermald
+        admin_password: B@ndito0317
+        network_interfaces: mermaldnic01
+        image:
+          offer: RHEL
+          publisher: RedHat
+          sku: '7.4'
+          version: latest
+      
+      register: azure
