@@ -10,4 +10,4 @@
         state: present
         name: "{{ resource_group }}"
         location: westus         
-    - include: "build_vm.yml"
+   # - include: "build_vm.yml"
