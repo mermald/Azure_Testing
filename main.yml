@@ -1,9 +1,7 @@
 ---
 - hosts: localhost
   connection: local
-  gather_facts: no
-  azure_rm_deployment:
-    auth_source: credential_file
+  gather_facts: no  
   vars_files:
     - vars/myvars.yml
   tasks:
