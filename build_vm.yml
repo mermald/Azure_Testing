@@ -1,6 +1,7 @@
     - name: Create storage account
       azure_rm_storageaccount:        
-        resource_group: "{{ resource_group }}"        
+        resource_group: "{{ resource_group }}"
+        name: mermaldstorage01        
         account_type: Standard_LRS                
         
     - name: Create virtual network
