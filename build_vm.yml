@@ -19,21 +19,13 @@
 
     - name: Create public ip
       azure_rm_publicipaddress:
-        resource_group: "{{ resource_group }}"        
-        subscription_id: "{{ subscription_id }}"
-        client_id: "{{ client_id }}"
-        secret: "{{ secret }}"
-        tenant: "{{ tenant }}" 
+        resource_group: "{{ resource_group }}"
         allocation_method: Static
         name: mermaldpip01 
         
     - name: Create security group that allows SSH
       azure_rm_securitygroup:
-        resource_group: "{{ resource_group }}"        
-        subscription_id: "{{ subscription_id }}"
-        client_id: "{{ client_id }}"
-        secret: "{{ secret }}"
-        tenant: "{{ tenant }}"
+        resource_group: "{{ resource_group }}"  
         name: mermaldsecgroup01
         rules:
           - name: SSH
@@ -45,11 +37,7 @@
 
     - name: Create NIC
       azure_rm_networkinterface:
-        resource_group: "{{ resource_group }}"
-        subscription_id: "{{ subscription_id }}"
-        client_id: "{{ client_id }}"
-        secret: "{{ secret }}"
-        tenant: "{{ tenant }}"
+        resource_group: "{{ resource_group }}"        
         name: mermaldnic01
         virtual_network: mermaldvnet01
         subnet: mermaldsubnet01
@@ -58,11 +46,7 @@
 
     - name: Create virtual machine
       azure_rm_virtualmachine:
-        resource_group: "{{ resource_group }}"
-        subscription_id: "{{ subscription_id }}"
-        client_id: "{{ client_id }}"
-        secret: "{{ secret }}"
-        tenant: "{{ tenant }}"
+        resource_group: "{{ resource_group }}"        
         name: mermaldvm01
         vm_size: Standard_D2s_v3
         storage_account: mermaldstorage01
