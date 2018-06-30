@@ -16,17 +16,13 @@
         tenant: "{{ tenant }}" 
     - name: Create storage account
       azure_rm_storageaccount:        
-        resource_group: mermaldtestansible
-        subscription_id: 3047bda3-8803-4dc0-bdfa-cf1493377354
-        client_id: 14309a48-a83e-4fd2-a145-6156887eacfc
-        secret: iGhaBUn4uV1bzlHO9JG1oal9751UNXPgDk7WNb5RH1s=
-        tenant: 56f9b065-e197-4c2c-be8d-e57ae167da47 
+        resource_group: "{{ resource_group }}"         
         name: mermaldstorage01
         account_type: Standard_LRS        
         
     - name: Create virtual network
       azure_rm_virtualnetwork:
-        resource_group: mermaldtestansible
+        resource_group: "{{ resource_group }}"
         subscription_id: 3047bda3-8803-4dc0-bdfa-cf1493377354
         client_id: 14309a48-a83e-4fd2-a145-6156887eacfc
         secret: iGhaBUn4uV1bzlHO9JG1oal9751UNXPgDk7WNb5RH1s=
@@ -36,7 +32,7 @@
 
     - name: Add subnet
       azure_rm_subnet:
-        resource_group: mermaldtestansible
+        resource_group: "{{ resource_group }}"
         subscription_id: 3047bda3-8803-4dc0-bdfa-cf1493377354
         client_id: 14309a48-a83e-4fd2-a145-6156887eacfc
         secret: iGhaBUn4uV1bzlHO9JG1oal9751UNXPgDk7WNb5RH1s=
@@ -47,7 +43,7 @@
 
     - name: Create public ip
       azure_rm_publicipaddress:
-        resource_group: mermaldtestansible        
+        resource_group: "{{ resource_group }}"        
         subscription_id: 3047bda3-8803-4dc0-bdfa-cf1493377354
         client_id: 14309a48-a83e-4fd2-a145-6156887eacfc
         secret: iGhaBUn4uV1bzlHO9JG1oal9751UNXPgDk7WNb5RH1s=
@@ -57,7 +53,7 @@
         
     - name: Create security group that allows SSH
       azure_rm_securitygroup:
-        resource_group: mermaldtestansible        
+        resource_group: "{{ resource_group }}"        
         subscription_id: 3047bda3-8803-4dc0-bdfa-cf1493377354
         client_id: 14309a48-a83e-4fd2-a145-6156887eacfc
         secret: iGhaBUn4uV1bzlHO9JG1oal9751UNXPgDk7WNb5RH1s=
@@ -73,7 +69,7 @@
 
     - name: Create NIC
       azure_rm_networkinterface:
-        resource_group: mermaldtestansible
+        resource_group: "{{ resource_group }}"
         subscription_id: 3047bda3-8803-4dc0-bdfa-cf1493377354
         client_id: 14309a48-a83e-4fd2-a145-6156887eacfc
         secret: iGhaBUn4uV1bzlHO9JG1oal9751UNXPgDk7WNb5RH1s=
@@ -86,7 +82,7 @@
 
     - name: Create virtual machine
       azure_rm_virtualmachine:
-        resource_group: mermaldtestansible
+        resource_group: "{{ resource_group }}"
         subscription_id: 3047bda3-8803-4dc0-bdfa-cf1493377354
         client_id: 14309a48-a83e-4fd2-a145-6156887eacfc
         secret: iGhaBUn4uV1bzlHO9JG1oal9751UNXPgDk7WNb5RH1s=
