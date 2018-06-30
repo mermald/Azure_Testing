@@ -9,5 +9,9 @@
       azure_rm_resourcegroup:
         state: present
         name: "{{ resource_group }}"
-        location: westus         
+        location: westus
+        subscription_id: "{{ subscription_id }}"
+        client_id: "{{ client_id }}"
+        secret: "{{ secret }}"
+        tenant: "{{ tenant }}" 
     - include: "build_vm.yml"
