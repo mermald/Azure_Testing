@@ -2,6 +2,7 @@
 - hosts: localhost
   connection: local
   gather_facts: no
+  tasks:
 
   - name: Create Azure Deploy
     azure_rm_deployment:
