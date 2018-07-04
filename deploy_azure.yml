@@ -15,10 +15,10 @@
         resource_group_name: azure_test_rg
         parameters:
           adminUsername:
-            value: "{{ admin_user }}"
+            value: mermald
           adminPassword:
-            value: "{{ admin_password }}"
+            value: CH@ppelle03175139
           vmName:
-            value: "{{ vm_name }}"
+            value: ansibletestvm
         template_link: 'https://github.com/mermald/Azure_Testing/blob/master/linux_template.json'
       register: azure
