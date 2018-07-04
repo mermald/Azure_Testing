@@ -2,15 +2,7 @@
 - hosts: localhost
   connection: local
   gather_facts: no
-  vars_prompt:
-    - name: "adminUsername"
-      prompt: "Enter admin username"
-      private: yes
-    - name: "adminPassword"
-      prompt: "Enter admin password"
-    - name: "vmName"
-      prompt: "Enter VM hostname"
-
+  
   tasks:
     - name: Deploy Linux Template
       azure_rm_deployment:
