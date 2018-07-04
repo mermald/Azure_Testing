@@ -2,11 +2,23 @@
 - hosts: localhost
   connection: local
   gather_facts: no
-  
+
   tasks:
-    - name: Deploy Linux Template
+    - name: Destroy Azure Deploy
       azure_rm_deployment:
-        state: present
-        resource_group_name: "ansible_test_rg"
+        state: absent        
+        resource_group_name: azure_test_rg
+
+    - name: Create Azure Deploy
+      azure_rm_deployment:
+        state: present        
+        resource_group_name: azure_test_rg
+        parameters:
+          adminUsername:
+            value: {{ admin_user }}
+          adminPassword:
+            value: {{ admin_password }}
+          vmName:
+            value: {{ vm_name }}
         template: "{{ lookup('file', 'linux_template.json') }}"
-        parameters: "{{ (lookup('file', 'linux_template.parameters.json') | from_json).parameters }}"
+      register: azure
