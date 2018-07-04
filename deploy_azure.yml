@@ -6,6 +6,6 @@
     - name: Deploy Linux Template
       azure_rm_deployment:
         state: present
-        resource_group_name: "rg-servers"
+        resource_group_name: "ansible_test_rg"
         template: "{{ lookup('file', 'linux_template.json') }}"
         parameters: "{{ (lookup('file', 'linux_template.parameters.json') | from_json).parameters }}"
