@@ -20,5 +20,5 @@
             value: "{{ admin_password }}"
           vmName:
             value: "{{ vm_name }}"
-        template: 'https://github.com/mermald/Azure_Testing/linux_template.json'
+        template_link: 'https://github.com/mermald/Azure_Testing/linux_template.json'
       register: azure
