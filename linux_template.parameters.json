@@ -3,13 +3,13 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "adminUsername": {
-            "value": string
+            "value": "{{ adminUsername }}"
         },
         "adminPassword": {
-            "value": string
+            "value": "{{ adminPassword }}"
         },
         "vmName": {
-            "value": string
+            "value": "{{ vmName }}"
         }
     }
 }
