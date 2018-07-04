@@ -15,10 +15,10 @@
         resource_group_name: azure_test_rg
         parameters:
           adminUsername:
-            value: {{ admin_user }}
+            value: "{{ admin_user }}"
           adminPassword:
-            value: {{ admin_password }}
+            value: "{{ admin_password }}"
           vmName:
-            value: {{ vm_name }}
-        template: "{{ lookup('file', 'linux_template.json') }}"
+            value: "{{ vm_name }}"
+        template: 'https://github.com/mermald/Azure_Testing/linux_template.json'
       register: azure
