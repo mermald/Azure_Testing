@@ -20,5 +20,7 @@
             value: CH@ppelle03175139
           vmName:
             value: ansibletestvm
+          location:
+            value: westus
         template_link: 'https://github.com/mermald/Azure_Testing/blob/master/linux_template.json'
       register: azure
