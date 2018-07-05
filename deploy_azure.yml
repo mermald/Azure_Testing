@@ -3,15 +3,15 @@
   connection: local
   gather_facts: no
   vars:
-    resource_group: "{{ param_resource_group }}"
-    virtual_network: "{{ param_virtual_network }}"
-    location: "{{ param_location }}"
-    vm_name: "{{ param_vm_name }}"
-    vm_size: "{{ param_vm_size }}"
-    storage_account: "{{ param_storage_account }}"
-    storage_type: "{{ param_storage_type }}"
-    admin_username: "{{ param_admin_user }}"
-    admin_password: "{{ param_admin_password }}"
+    param_resource_group: "{{ param_resource_group }}"
+    param_virtual_network: "{{ param_virtual_network }}"
+    param_location: "{{ param_location }}"
+    param_vm_name: "{{ param_vm_name }}"
+    param_vm_size: "{{ param_vm_size }}"
+    param_storage_account: "{{ param_storage_account }}"
+    param_storage_type: "{{ param_storage_type }}"
+    param_admin_username: "{{ param_admin_user }}"
+    param_admin_password: "{{ param_admin_password }}"
   tasks:
     - name: Create resource group
       azure_rm_resourcegroup:
