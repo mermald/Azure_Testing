@@ -5,56 +5,56 @@
   tasks:
     - name: Create resource group
       azure_rm_resourcegroup:
-        name: "{{ resource_group }}"
+        name: "{{ param_resource_group }}"
         state: present
-        location: "{{ location }}"
+        location: "{{ param_location }}"
       register: output
     - name: Create virtual network
       azure_rm_virtualnetwork:
-        resource_group: "{{ resource_group }}"
+        resource_group: "{{ param_resource_group }}"
         state: present
-        name: "{{ virtual_network }}"
+        name: "{{ param_virtual_network }}"
         address_prefixes_cidr: '10.128.0.0/16'
     - name: Create a subnet
       azure_rm_subnet:
         state: present
-        name: "{{ vm_name }}.subnet"
-        virtual_network_name: "{{ virtual_network }}"
-        resource_group: "{{ resource_group }}"
+        name: "{{ param_vm_name }}.subnet"
+        virtual_network_name: "{{ param_virtual_network }}"
+        resource_group: "{{ param_resource_group }}"
         address_prefix_cidr: "10.128.10.0/24"
     - name: Create a network interface with private IP address and Public IP
       azure_rm_networkinterface:
         state: present
-        name: "{{ vm_name }}.nic"        
-        resource_group: "{{ resource_group }}"
-        virtual_network_name: "{{ virtual_network }}"
-        subnet_name: "{{ vm_name }}.subnet"
+        name: "{{ param_vm_name }}.nic"        
+        resource_group: "{{ param_resource_group }}"
+        virtual_network_name: "{{ param_virtual_network }}"
+        subnet_name: "{{ param_vm_name }}.subnet"
         security_group_name:
         ip_configurations:
           - name: ipconfig1
-            public_ip_address_name: "{{ vm_name }}.pip"
+            public_ip_address_name: "{{ param_vm_name }}.pip"
             public_ip_allocation_method: Dynamic
             private_ip_allocation_method: Dynamic
       register: output
     - name: Create storage account
       azure_rm_storageaccount:
-        name: "{{ storage_account }}"
+        name: "{{ param_storage_account }}"
         state: present
-        resource_group: "{{ resource_group}}"        
-        account_type: "{{ storage_type }}"
+        resource_group: "{{ param_resource_group}}"        
+        account_type: "{{ param_storage_type }}"
     - name: Create VM
       azure_rm_virtualmachine:
-        resource_group: "{{ resource_group }}"
-        name: "{{ vm_name }}"
+        resource_group: "{{ param_resource_group }}"
+        name: "{{ param_vm_name }}"
         state: present
-        vm_size: "{{ vm_size }}"
-        managed_disk_type: "{{ storage_type }}"
-        storage_container: "{{ vm_name }}.osdisk"
-        storage_blob: "{{ vm_name }}.osdisk.vhd"
-        admin_username: "{{ admin_user }}"
-        admin_password: "{{ admin_password }}"        
-        virtual_network_name: "{{ virtual_network}}"
-        network_interfaces: "{{ vm_name }}.nic"
+        vm_size: "{{ param_vm_size }}"
+        managed_disk_type: "{{ param_storage_type }}"
+        storage_container: "{{ param_vm_name }}.osdisk"
+        storage_blob: "{{ param_vm_name }}.osdisk.vhd"
+        admin_username: "{{ param_admin_user }}"
+        admin_password: "{{ param_admin_password }}"        
+        virtual_network_name: "{{ param_virtual_network}}"
+        network_interfaces: "{{ param_vm_name }}.nic"
         image:
           offer: RHEL
           publisher: RedHat
