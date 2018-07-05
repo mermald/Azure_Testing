@@ -33,8 +33,8 @@
         ip_configurations:
           - name: ipconfig1
             public_ip_address_name: "{{ vm_name }}.pip"
-            public_ip_allocation_method: dynamic
-            private_ip_allocation_method: dynamic
+            public_ip_allocation_method: Dynamic
+            private_ip_allocation_method: Dynamic
       register: output
     - name: Create storage account
       azure_rm_storageaccount:
