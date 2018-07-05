@@ -15,6 +15,15 @@
         state: present
         name: "{{ virtual_network }}"
         address_prefixes_cidr: '10.128.0.0/16'
+    - name: Create a network interface with private IP address only (no Public IP)
+      azure_rm_networkinterface:
+        name: "{{ vm_name }}".nic
+        resource_group: Testing
+        virtual_network_name: "{{ virtual_network }}"
+        subnet_name: "{{ virtual_network }}.subnet"
+        ip_configurations:
+          - name: ipconfig1
+            primary: True
       register: output
     - name: Create storage account
       azure_rm_storageaccount:
