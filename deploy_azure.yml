@@ -22,16 +22,19 @@
         virtual_network_name: "{{ virtual_network }}"
         resource_group: "{{ resource_group }}"
         address_prefix_cidr: "10.128.10.0/24"
-    - name: Create a network interface with private IP address only (no Public IP)
+    - name: Create a network interface with private IP address and Public IP
       azure_rm_networkinterface:
         state: present
         name: "{{ vm_name }}.nic"        
         resource_group: "{{ resource_group }}"
         virtual_network_name: "{{ virtual_network }}"
         subnet_name: "{{ vm_name }}.subnet"
+        security_group_name:
         ip_configurations:
           - name: ipconfig1
-            primary: True
+            public_ip_address_name: "{{ vm_name }}.pip"
+            public_ip_allocation_method: dynamic
+            private_ip_allocation_method: dynamic
       register: output
     - name: Create storage account
       azure_rm_storageaccount:
