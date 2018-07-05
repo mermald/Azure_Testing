@@ -18,6 +18,7 @@
     - name: Create a network interface with private IP address only (no Public IP)
       azure_rm_networkinterface:
         name: "{{ vm_name }}".nic
+        state: present
         resource_group: Testing
         virtual_network_name: "{{ virtual_network }}"
         subnet_name: "{{ virtual_network }}.subnet"
