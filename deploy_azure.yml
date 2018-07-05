@@ -19,7 +19,7 @@
       azure_rm_networkinterface:
         state: present
         name: "{{ vm_name }}.nic"        
-        resource_group: Testing
+        resource_group: "{{ resource_group }}"
         virtual_network_name: "{{ virtual_network }}"
         subnet_name: "{{ virtual_network }}.subnet"
         ip_configurations:
