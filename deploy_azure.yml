@@ -108,7 +108,7 @@
           ExtensionAction: "Register"
         protected_settings:
           RegistrationUrl: "https://wcus-agentservice-prod-1.azure-automation.net/accounts/6a9b862f-ad09-4b0c-8907-d4ab1fda78f6"
-          RegistrataionKey: "60MBW/o/yyXmrL92Ym3johoi7YcecEJ971w0AQ1Tf+eKmjLvnW6ioIUkqiK1fHJjsNwxQSoAy6HeiWmIh1lLyg=="
+          RegistrationKey: "60MBW/o/yyXmrL92Ym3johoi7YcecEJ971w0AQ1Tf+eKmjLvnW6ioIUkqiK1fHJjsNwxQSoAy6HeiWmIh1lLyg=="
 
 
 
