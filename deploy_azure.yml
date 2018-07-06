@@ -80,7 +80,7 @@
         virtual_machine_extension_type: LinuxDiagnostic
         type_handler_version: 2.0
         auto_upgrade_minor_version: true
-    - name: Create VM Extension
+    - name: Add OMS Agent for Linux Extension
       azure_rm_virtualmachine_extension:
         name: "OMSAgentforLinux"
         location: "{{ location }}"
@@ -88,8 +88,13 @@
         virtual_machine_name: "{{ vm_name }}"
         publisher: Microsoft.EnterpriseCloud.Monitoring
         virtual_machine_extension_type: OmsAgentForLinux
-        type_handler_version: 1.0        
+        type_handler_version: 1.4        
         auto_upgrade_minor_version: true
+        settings:
+          workspaceID: "b502dca2-1ba6-491c-a446-168ffb4c3c2f"
+        protected_settings: 
+          workspaceKey: "3XcdU7GkPO94tNywol5D//HXO7REFrB3xNCFYALM2SVmjfavcIL6D59e9UngIr68yRigV0IjNFCd24lp5hSLEg=="
+
 
 
 
