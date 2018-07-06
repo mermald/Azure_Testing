@@ -69,17 +69,16 @@
           offer: RHEL
           publisher: RedHat
           sku: '7.4'
-          version: latest
-    - name: Create VM Extension
+          version: latest          
+    - name: Create DSC Extension    
       azure_rm_virtualmachine_extension:
-        name: "CustomScript"
+        name: "DSCForLinux"
         location: "{{ location }}"
         resource_group: "{{ resource_group }}"
         virtual_machine_name: "{{ vm_name }}"
-        publisher: Microsoft.Azure.Extensions
-        virtual_machine_extension_type: CustomScript
+        publisher: Microsoft.OSTCExtensions
+        virtual_machine_extension_type: DSCForLinux
         type_handler_version: 2.0
-        settings: '{"commandToExecute": "yum update -y"}'
         auto_upgrade_minor_version: true
 
 
