@@ -94,9 +94,9 @@
           workspaceId: "b502dca2-1ba6-491c-a446-168ffb4c3c2f"
         protected_settings: 
           workspaceKey: "3XcdU7GkPO94tNywol5D//HXO7REFrB3xNCFYALM2SVmjfavcIL6D59e9UngIr68yRigV0IjNFCd24lp5hSLEg=="
-    - name: Add OMS Agent for Linux Extension
+    - name: Add DSC Extension for Linux
       azure_rm_virtualmachine_extension:
-        name: "OMSAgentforLinux"
+        name: "DSCForLinux"
         location: "{{ location }}"
         resource_group: "{{ resource_group }}"
         virtual_machine_name: "{{ vm_name }}"
@@ -105,7 +105,7 @@
         type_handler_version: 2.7 
         auto_upgrade_minor_version: true
         settings:
-          ExtensionAction: Register
+          ExtensionAction: "Register"
 
 
 
