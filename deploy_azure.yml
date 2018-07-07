@@ -57,7 +57,7 @@
         admin_username: "{{ admin_user }}"
         admin_password: "{{ admin_password }}"        
         virtual_network_name: "{{ virtual_network}}"
-        network_interfaces: "{{ vm_name }}.nic"
+        network_interfaces: "{{ vnet_resource_group }}{{ vm_name }}.nic"
         image:
           offer: RHEL
           publisher: RedHat
