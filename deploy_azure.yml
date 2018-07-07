@@ -19,19 +19,7 @@
         state: present
         location: "{{ location }}"
       register: output
-    - name: Create virtual network
-      azure_rm_virtualnetwork:
-        resource_group: "{{ resource_group }}"
-        state: present
-        name: "{{ virtual_network }}"
-        
-    - name: Create a subnet
-      azure_rm_subnet:
-        state: present
-        name: "{{ vm_name }}.subnet"
-        virtual_network_name: "{{ virtual_network }}"
-        resource_group: "{{ resource_group }}"
-        
+           
     - name: Create a network interface with private IP address and Public IP
       azure_rm_networkinterface:
         state: present
