@@ -24,14 +24,14 @@
         resource_group: "{{ resource_group }}"
         state: present
         name: "{{ virtual_network }}"
-        address_prefixes_cidr: '10.128.0.0/16'
+        
     - name: Create a subnet
       azure_rm_subnet:
         state: present
         name: "{{ vm_name }}.subnet"
         virtual_network_name: "{{ virtual_network }}"
         resource_group: "{{ resource_group }}"
-        address_prefix_cidr: "10.128.10.0/24"
+        
     - name: Create a network interface with private IP address and Public IP
       azure_rm_networkinterface:
         state: present
