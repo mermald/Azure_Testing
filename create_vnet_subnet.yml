@@ -10,6 +10,11 @@
     param_address_prefix: "{{ subnet_prefix }}"
 
   tasks:
+    - name: Create resource group if missing
+      azure_rm_resourcegroup:
+        name: "{{ resource_group }}"
+        state: present
+        location: "{{ location }}"
     - name: Create virtual network
       azure_rm_virtualnetwork:
         resource_group: "{{ resource_group }}"        
