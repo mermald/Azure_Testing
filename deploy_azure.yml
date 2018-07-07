@@ -33,9 +33,9 @@
       azure_rm_networkinterface:
         state: present
         name: "{{ vm_name }}.nic"        
-        resource_group: "{{ resource_group }}"
+        resource_group: "{{ vnet_resource_group }}"
         virtual_network_name: "{{ virtual_network }}"
-        subnet: "{{ subnet_name}}"
+        subnet: "{{ subnet_name }}"
         security_group_name:
         ip_configurations:
           - name: ipconfig1
