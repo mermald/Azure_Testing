@@ -26,7 +26,7 @@
         name: "{{ vm_name }}.nic"        
         resource_group: "{{ resource_group }}"
         virtual_network_name: "{{ virtual_network }}"
-        
+        subnet: default
         security_group_name:
         ip_configurations:
           - name: ipconfig1
