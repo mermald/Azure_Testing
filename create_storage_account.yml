@@ -7,7 +7,7 @@
     param_location: "{{ location }}"
     param_storage_type: "{{ storage_type }}"
     param_storage_account: "{{ storage_account }}"
-
+  tasks:
     - name: Create storage account
       azure_rm_storageaccount:
         name: "{{ storage_account }}"
