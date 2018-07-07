@@ -30,8 +30,7 @@
         virtual_network: "{{ virtual_network }}"
            
     - name: Create a network interface with private IP address and Public IP
-      azure_rm_networkinterface:
-        state: present
+      azure_rm_networkinterface:        
         name: "{{ vm_name }}.nic"        
         resource_group: "{{ resource_group }}"
         virtual_network_name: "{{ virtual_network }}"
