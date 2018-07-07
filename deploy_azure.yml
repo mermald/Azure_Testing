@@ -14,6 +14,7 @@
     param_admin_password: "{{ admin_password }}"
     param_subnet_name: "{{ subnet_name }}"
     param_address_prefix: "{{ address_prefix }}"
+    param_vnet_resource_group: "{{ vnet_resource_group }}"
   tasks:
     - name: Create resource group
       azure_rm_resourcegroup:
@@ -23,7 +24,7 @@
       register: output
     - name: Add subnet
       azure_rm_subnet:
-        resource_group: "{{ resource_group }}"         
+        resource_group: "{{ vnet_resource_group }}"         
         name: "{{ subnet_name }}"
         address_prefix: "{{ address_prefix }}"
         virtual_network: "{{ virtual_network }}"
