@@ -1,0 +1,16 @@
+---
+- hosts: localhost
+  connection: local
+  gather_facts: no
+  vars:
+    param_resource_group: "{{ resource_group }}"
+    param_location: "{{ location }}"
+    param_storage_type: "{{ storage_type }}"
+    param_storage_account: "{{ storage_account }}"
+
+      - name: Create storage account
+        azure_rm_storageaccount:
+          name: "{{ storage_account }}"
+          state: present
+          resource_group: "{{ resource_group}}"        
+          account_type: "{{ storage_type }}"
