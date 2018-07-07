@@ -47,8 +47,7 @@
     - name: Create VM
       azure_rm_virtualmachine:
         resource_group: "{{ resource_group }}"
-        name: "{{ vm_name }}"
-        state: present
+        name: "{{ vm_name }}"        
         vm_size: "{{ vm_size }}"
         storage_account: "{{ storage_account }}"
         managed_disk_type: "{{ storage_type }}"
@@ -60,6 +59,7 @@
         network_interfaces: 
           name: "{{ vm_name }}.nic"
           resource_group: "{{ vnet_resource_group }}"
+          virtual_network: "{{ virtual_network }}"
         image:
           offer: RHEL
           publisher: RedHat
