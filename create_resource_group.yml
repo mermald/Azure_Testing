@@ -1,0 +1,14 @@
+---
+- hosts: localhost
+  connection: local
+  gather_facts: no
+  vars:
+    param_resource_group: "{{ resource_group }}"
+    param_location: "{{ location }}"
+  tasks:
+    - name: Create resource group
+      azure_rm_resourcegroup:
+        name: "{{ resource_group }}"
+        state: present
+        location: "{{ location }}"
+      register: output
