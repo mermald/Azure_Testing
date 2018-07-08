@@ -26,7 +26,7 @@
       azure_rm_storageaccount:
         resource_group: "{{ resource_group }}"
         name: "{{ storage_account }}"
-        access_tier: Hot
+        accessTier: Hot
         account_type: "{{ storage_type }}"
 
     - name: Create virtual network
