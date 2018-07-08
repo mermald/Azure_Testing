@@ -15,7 +15,7 @@
       register: output
     - name: Create (or update) SQL Server
       azure_rm_sqlserver:
-        resource_group: resource_group
+        resource_group: "{{ resource_group }}"
         name: "{{ server_name }}"
         location: westus
         admin_username: mermald
