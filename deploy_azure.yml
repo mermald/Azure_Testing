@@ -8,8 +8,6 @@
     param_location: "{{ location }}"
     param_vm_name: "{{ vm_name }}"
     param_vm_size: "{{ vm_size }}"    
-    param_admin_username: "{{ admin_user }}"
-    param_admin_password: "{{ admin_password }}"
     param_subnet_name: "{{ subnet_name }}"
     param_address_prefix: "{{ address_prefix }}"
     param_address_prefixes: "{{ address_prefixes }}"
@@ -69,8 +67,8 @@
         managed_disk_type: "{{ storage_type }}"
         storage_container: "{{ vm_name }}.osdisk"
         storage_blob: "{{ vm_name }}.osdisk.vhd"        
-        admin_username: "{{ admin_user }}"
-        admin_password: "{{ admin_password }}"        
+        admin_username: mermald
+        admin_password: P@ssword03175139       
         virtual_network_name: "{{ virtual_network}}"
         network_interfaces: "{{ vm_name }}.nic"
         image:
