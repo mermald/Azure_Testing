@@ -19,6 +19,7 @@
         name: "{{ vm_name }}"
         vm_size: "{{ vm_size }}"
         capacity: 2
+        upgrade_policy: Manual
         virtual_network_name: "{{ virtual_network }}"
         subnet_name: "{{ subnet_name }}"
         admin_username: "{{ admin_username }}"
