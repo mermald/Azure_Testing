@@ -41,13 +41,14 @@
         resource_group: "{{ resource_group }}"
         virtual_network_name: "{{ virtual_network }}"
         subnet: "{{ subnet_name }}"
-        security_group_name:
-        ip_configurations:
-          - name: ipconfig1
-            public_ip_address_name: "{{ vm_name }}.pip"
-            public_ip_allocation_method: Dynamic
-            private_ip_allocation_method: Dynamic
+        allocation_method: Dynamic        
       register: output
+
+    - name: Create a public ip address
+      azure_rm_publicipaddress:
+        resource_group: "{{ resource_group }}"
+        name: "{{ vm_name }}.pip"
+        allocation_method: Dynamic
     
     - name: Create VM
       azure_rm_virtualmachine:
