@@ -54,11 +54,7 @@
       azure_rm_virtualmachine:
         resource_group: "{{ resource_group }}"
         name: "{{ vm_name }}"        
-        vm_size: "{{ vm_size }}"
-        storage_account: "{{ storage_account }}"
-        managed_disk_type: "{{ storage_type }}"
-        storage_container: "{{ vm_name }}.osdisk"
-        storage_blob: "{{ vm_name }}.osdisk.vhd"
+        vm_size: "{{ vm_size }}"        
         admin_username: "{{ admin_user }}"
         admin_password: "{{ admin_password }}"        
         virtual_network_name: "{{ virtual_network}}"
