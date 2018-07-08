@@ -7,12 +7,32 @@
     param_vm_name: "{{ vm_name }}"
     param_vm_size: "{{ vm_size }}"
     param_virtual_network: "{{ virtual_network }}"
+    param_address_prefixes: "{{ address_prefixes }}"
     param_subnet_name: "{{ subnet_name }}"
+    param_address_prefix: "{{ address_prefix }}"
     param_admin_username: "{{ admin_username }}"
     param_admin_password: "{{ admin_password }}"
     param_storage_type: "{{ storage_type }}"
 
   tasks:
+    - name: Create resource group
+      azure_rm_resourcegroup:
+        name: "{{ resource_group }}"
+        state: present
+        location: "{{ location }}"
+      register: output
+    - name: Create virtual network
+      azure_rm_virtualnetwork:
+        resource_group: "{{ resource_group }}"        
+        name: "{{ virtual_network }}"
+        location: "{{ location }}"
+        address_prefixes: "{{ address_prefixes }}"
+    - name: Add subnet
+      azure_rm_subnet:
+        resource_group: "{{ resource_group }}"         
+        name: "{{ subnet_name }}"
+        address_prefix: "{{ address_prefix }}"
+        virtual_network: "{{ virtual_network }}"
     - name: Create VMSS
       azure_rm_virtualmachine_scaleset:
         resource_group: "{{ resource_group }}"
