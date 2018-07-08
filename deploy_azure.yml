@@ -6,7 +6,7 @@
     param_resource_group: "{{ resource_group }}"
     param_virtual_network: "{{ virtual_network }}"
     param_location: "{{ location }}"
-    param_vm_name: "{{ vm_name }}"
+    param_vm_name: "{{ vm_name }}"{{ rpfx }}
     param_vm_size: "{{ vm_size }}"
     param_storage_account: "{{ storage_account }}"
     param_storage_type: "{{ storage_type }}"
@@ -16,6 +16,10 @@
     param_address_prefix: "{{ address_prefix }}"
     param_address_prefixes: "{{ address_prefixes }}"
   tasks:
+    - name: Prepare random postfix
+      set_fact:
+        rpfx: "{{ 100000 | random }}"
+      run_once: yes
     - name: Create resource group
       azure_rm_resourcegroup:
         name: "{{ resource_group }}"
