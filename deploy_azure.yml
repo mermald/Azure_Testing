@@ -41,7 +41,7 @@
         resource_group: "{{ resource_group }}"
         virtual_network_name: "{{ virtual_network }}"
         subnet: "{{ subnet_name }}"
-        allocation_method: Dynamic        
+        private_ip_allocation_method: Dynamic        
       register: output
 
     - name: Create a public ip address
