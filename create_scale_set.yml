@@ -14,6 +14,7 @@
     param_admin_username: "{{ admin_username }}"
     param_admin_password: "{{ admin_password }}"
     param_storage_type: "{{ storage_type }}"
+    param_load_balancer: "{{ load_balancer }}"
 
   tasks:
     - name: Create resource group
@@ -46,6 +47,7 @@
         subnet_name: "{{ subnet_name }}"
         admin_username: "{{ admin_username }}"
         admin_password: "{{ admin_password }}"
+        load_balancer: "{{ load_balancer }}"
         managed_disk_type: "{{ storage_type }}"
         image:
           offer: RHEL
