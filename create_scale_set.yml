@@ -15,6 +15,7 @@
     param_admin_password: "{{ admin_password }}"
     param_storage_type: "{{ storage_type }}"
     param_load_balancer: "{{ load_balancer }}"
+    param_public_ip: "{{ public_ip_name }}"
 
   tasks:
     - name: Create resource group
@@ -35,6 +36,31 @@
         name: "{{ subnet_name }}"
         address_prefix: "{{ address_prefix }}"
         virtual_network: "{{ virtual_network }}"
+        ip_configurations:
+          - name: ipconfig1
+            public_ip_address_name: "{{ vm_name }}.pip"
+            public_ip_allocation_method: Dynamic
+            private_ip_allocation_method: Dynamic
+    - name: Create a load balancer
+      azure_rm_loadbalancer:
+        name: "{{ load_balancer }}"
+        location: "{{ location }}"
+        resource_group: "{{ resource_group }}"
+        public_ip: "{{ vm_name }}.pip"
+        probe_protocol: Tcp
+        probe_port: 80
+        probe_interval: 10
+        probe_fail_count: 3
+        protocol: Tcp
+        load_distribution: Default
+        frontend_port: 80
+        backend_port: 8080
+        idle_timeout: 4
+        natpool_frontend_port_start: 1030
+        natpool_frontend_port_end: 1040
+        natpool_backend_port: 80
+        natpool_protocol: Tcp
+
     - name: Create VMSS
       azure_rm_virtualmachine_scaleset:
         resource_group: "{{ resource_group }}"
