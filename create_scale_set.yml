@@ -1,0 +1,36 @@
+---
+- hosts: localhost
+  connection: local
+  gather_facts: no
+  vars:
+    param_resource_group: "{{ resource_group }}"
+    param_vm_name: "{{ vm_name }}"
+    param_vm_size: "{{ vm_size }}"
+    param_virtual_network: "{{ virtual_network }}"
+    param_subnet_name: "{{ subnet_name }}"
+    param_admin_username: "{{ admin_username }}"
+    param_admin_password: "{{ admin_password }}"
+    param_storage_type: "{{ storage_type }}"
+
+  tasks:
+    - name: Create VMSS
+      azure_rm_virtualmachine_scaleset:
+        resource_group: Testing
+        name: "{{ vm_name }}"
+        vm_size: "{{ vm_size }}"
+        capacity: 2
+        virtual_network_name: "{{ virtual_network }}"
+        subnet_name: "{{ subnet_name }}"
+        admin_username: "{{ admin_username }}"
+        admin_password: "{{ admin_password }}"
+        managed_disk_type: "{{ storage_type }}"
+        image:
+          offer: RHEL
+          publisher: Redhat
+          sku: '7.4'
+          version: latest
+        data_disks:
+          - lun: 0
+            disk_size_gb: 64
+            caching: ReadWrite
+            managed_disk_type: "{{ storage_type }}"
