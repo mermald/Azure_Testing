@@ -15,8 +15,7 @@
     param_admin_password: "{{ admin_password }}"
     param_storage_type: "{{ storage_type }}"
     param_load_balancer: "{{ load_balancer }}"
-    param_public_ip: "{{ public_ip_name }}"
-
+    
   tasks:
     - name: Create resource group
       azure_rm_resourcegroup:
@@ -24,23 +23,27 @@
         state: present
         location: "{{ location }}"
       register: output
+
     - name: Create virtual network
       azure_rm_virtualnetwork:
         resource_group: "{{ resource_group }}"        
         name: "{{ virtual_network }}"
         location: "{{ location }}"
         address_prefixes: "{{ address_prefixes }}"
+
+    - name: Create a public ip address
+      azure_rm_publicipaddress:
+        resource_group: "{{ resource_group }}"
+        name: "{{ vm_name }}.pip"
+        allocation_method: Dynamic
+
     - name: Add subnet
       azure_rm_subnet:
         resource_group: "{{ resource_group }}"         
         name: "{{ subnet_name }}"
         address_prefix: "{{ address_prefix }}"
         virtual_network: "{{ virtual_network }}"
-        ip_configurations:
-          - name: ipconfig1
-            public_ip_address_name: "{{ vm_name }}.pip"
-            public_ip_allocation_method: Dynamic
-            private_ip_allocation_method: Dynamic
+        
     - name: Create a load balancer
       azure_rm_loadbalancer:
         name: "{{ load_balancer }}"
