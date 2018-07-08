@@ -28,7 +28,7 @@
         name: "{{ storage_account }}"        
         account_type: "{{ storage_type }}"
         access_tier: 
-          type: Hot
+          Hot
 
     - name: Create virtual network
       azure_rm_virtualnetwork:
