@@ -64,9 +64,7 @@
         name: "{{ vm_name }}"        
         vm_size: "{{ vm_size }}"
         storage_account_name: "{{ storage_account }}"
-        managed_disk_type: "{{ storage_type }}"
-        storage_container_name: vhds
-        storage_blob_name: "{{ vm_name }}.vhd"             
+        managed_disk_type: "{{ storage_type }}"                     
         admin_username: mermald
         admin_password: P@ssword03175139       
         virtual_network_name: "{{ virtual_network}}"
