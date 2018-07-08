@@ -1,0 +1,23 @@
+---
+- hosts: localhost
+  connection: local
+  gather_facts: no
+  vars:
+    param_resource_group: "{{ resource_group }}"
+    param_server_name: "{{ server_name }}"
+
+  tasks:
+    - name: Create resource group
+      azure_rm_resourcegroup:
+        name: "{{ resource_group }}"
+        state: present
+        location: westus2
+      register: output
+
+    - name: Create (or update) SQL Server
+  	  azure_rm_sqlserver:
+    	  resource_group: resource_group
+    	  name: "{{ server_name }}"
+    	  location: westus
+    	  admin_username: mermald
+    	  admin_password: P@ssword03171981
