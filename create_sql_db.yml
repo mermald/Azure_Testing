@@ -13,11 +13,10 @@
         state: present
         location: westus2
       register: output
-
     - name: Create (or update) SQL Server
-  	  azure_rm_sqlserver:
-    	  resource_group: resource_group
-    	  name: "{{ server_name }}"
-    	  location: westus
-    	  admin_username: mermald
-    	  admin_password: P@ssword03171981
+      azure_rm_sqlserver:
+        resource_group: resource_group
+        name: "{{ server_name }}"
+        location: westus
+        admin_username: mermald
+        admin_password: P@ssword03171981   
