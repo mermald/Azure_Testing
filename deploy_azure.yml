@@ -33,6 +33,7 @@
       azure_rm_storageblob:
         resource_group: "{{ resource_group }}"
         storage_account_name: "{{ storage_account }}"
+        blob_type: page
         container: vhds
 
     - name: Create virtual network
