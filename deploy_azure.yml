@@ -28,6 +28,13 @@
         name: "{{ storage_account }}"        
         account_type: "{{ storage_type }}"
         kind: Storage
+    
+    - name: Create managed disk
+      azure_rm_managed_disk:
+        name: "{{ vm_name }}"
+        location: "{{ location }}"
+        resource_group: "{{ resource_group }}"
+        disk_size_gb: 32
 
     - name: Create virtual network
       azure_rm_virtualnetwork:
@@ -64,6 +71,7 @@
         name: "{{ vm_name }}"        
         vm_size: "{{ vm_size }}"
         storage_account_name: "{{ storage_account }}"
+        managed_disk_type: "{{ storage_type }}"
         storage_container: "{{ vm_name }}"
         storage_blob: "{{ vm_name }}.vhd"                    
         admin_username: mermald
