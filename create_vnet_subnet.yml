@@ -4,7 +4,6 @@
   gather_facts: no
   vars:
     param_resource_group: "{{ resource_group }}"
-    param_location: "{{ location }}"
     param_virtual_network: "{{ virtual_network }}"
     param_address_prefixes: "{{ address_prefixes }}"
     param_address_prefix: "{{ address_prefix }}"
@@ -15,12 +14,12 @@
       azure_rm_resourcegroup:
         name: "{{ resource_group }}"
         state: present
-        location: "{{ location }}"
+        location: "westus2"
     - name: Create virtual network
       azure_rm_virtualnetwork:
         resource_group: "{{ resource_group }}"        
         name: "{{ virtual_network }}"
-        location: "{{ location }}"
+        location: "westus2"
         address_prefixes: "{{ address_prefixes }}"
     - name: Add default subnet
       azure_rm_subnet:
